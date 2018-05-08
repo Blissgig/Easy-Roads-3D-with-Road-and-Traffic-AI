@@ -7,6 +7,36 @@ Easy Roads 3D: https://assetstore.unity.com/packages/tools/terrain/easyroads3d-p
 
 Road & Traffic AI has their own street objects, however they are straight pieces and I liked the ability that Easy Roads 3D allows to make curved and unique roads.   So I took the nodes from R&T and tweaked the code a little bit so they can be used with ERD3D.
 
+-------------
+The New Method
+(Additional info coming soon)
+
+The old method had you, the developer, copy and pasting vast amounts of Traffic Nodes is painful and slow.  So I developed this method to easy the pain.
+
+The process is as follows:
+* Create a prefab of the Road & Traffic AI's "Traffic Node".  I also included a sphere that is flattened as this shows me the width of the lane. 
+* You will need to create two Side Objects within Easy Roads 3D's main script.  One for the Right side of the road, one for the left.   The name HAS to include the word "Right" and "Left" to properly add additional lanes.  It's a hack, I know, but at the moment I have not found another method to know which side the node is on.   
+* Add these Side Objects to the roads you want to affect.
+* There are two scripts, attach the <insert script name> to the Easy Roads 3D's "Road Network".  
+* The <script> properties:
+    * Traffic Node - Add the prefab you just created to this property.
+    * Lane Width - This is to help place the distance on the road.
+    * Min
+    * Max
+    * Node Folder Name - This is used to created sub "folders" within each Road with the Lanes named.  This name 
+* Press the <button>. It will add additional Lanes and connect them to each other,
+* The previous folder nodes will still be left and you should delete them.  Will work on a fix as soon as possible.
+* Insersections are not working at the moment.  TODO
+* This does not connect each of the roads to each other.  This will have to be done manually by adding an addition <insert node property> to the list and connect it.
+    
+
+
+
+
+-------------
+The Old Method.  
+It involves a lot of manual moving of elements.  There is still value in this approach, but the new method allows for larger scale change.
+
 The process is that a node is created and named; "NAME (0)", where "NAME" can be changed to whatever name you want, but the "(0)" is necessary as the function "GetPreviousNode()" relies on this naming convention.
 
 With these changes you can copy n paste the first node and then move the new node to the location you desire.  The previous node will point to the new node.
