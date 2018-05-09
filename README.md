@@ -9,7 +9,6 @@ Road & Traffic AI has their own street objects, however they are straight pieces
 
 -------------
 The New Method
-(Additional info coming soon)
 
 The old method had you, the developer, copy and pasting vast amounts of Traffic Nodes is painful and slow.  So I developed this method to easy the pain.
 
@@ -17,23 +16,23 @@ The process is as follows:
 * Create a prefab of the Road & Traffic AI's "Traffic Node".  I also included a sphere that is flattened as this shows me the width of the lane. 
 * You will need to create two Side Objects within Easy Roads 3D's main script.  One for the Right side of the road, one for the left.   The name HAS to include the word "Right" and "Left" to properly add additional lanes.  It's a hack, I know, but at the moment I have not found another method to know which side the node is on.   
 * Add these Side Objects to the roads you want to affect.
-* There are two scripts, attach the <insert script name> to the Easy Roads 3D's "Road Network".  
-* The <script> properties:
+* There are two scripts;
+    * "TrafficNodeSetup.cs" attach to the Easy Roads 3D's "Road Network".  https://imgur.com/a/0NWhk0s
+    * "TrafficNodeSetupEditor.cs" which is used by the other script.
+* The TrafficNodeSetup properties:
     * Traffic Node - Add the prefab you just created to this property.
-    * Lane Width - This is to help place the distance on the road.
-    * Min
-    * Max
-    * Node Folder Name - This is used to created sub "folders" within each Road with the Lanes named.  This name 
-* Press the <button>. It will add additional Lanes and connect them to each other,
+    * Lane Width - This is to help place the distance on the road.  eg: If your road has a width of 20 and the Lane Width is set to 5 there will be a total of 4 lanes.
+    * Min Nodes Lane Change - The minimum number of nodes ahead that will connect for lane change.  For example; If you have a road that has two lanes, and a car is currently at Lane (0), Node (0).  If the Min is 3, then Node (0) will connect to Lane (1) Node (3).   This is so that when a vehicle changes lanes it feels more natural than just sliding to the side.
+    * Max Nodes Lane Change
+    * Node Folder Name - This is used to created sub "folders" within each Road with the Lanes named.  This name should be different from the Side Object name.
+* Press the "Build Traffic Nodes". It will add additional Lanes and connect them to each other,
 * The previous folder nodes will still be left and you should delete them.  Will work on a fix as soon as possible.
 * Insersections are not working at the moment.  TODO
-* This does not connect each of the roads to each other.  This will have to be done manually by adding an addition <insert node property> to the list and connect it.
+* This does not connect each of the roads to each other.  This will have to be done manually by adding an additional value to "Connected Nodes" on the "Traffic System Node" script to the list and connect the new node to this property.
     
 
-
-
-
 -------------
+
 The Old Method.  
 It involves a lot of manual moving of elements.  There is still value in this approach, but the new method allows for larger scale change.
 
